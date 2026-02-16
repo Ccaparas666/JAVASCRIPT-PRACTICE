@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    .container {
+      background-color: #000;
+      height: 100vh;
+      transition: 1s;
+      margin: 0;
+      padding: 0;
+    }
+
+    .containerNewColor{
+      background-color: red;
+    }
+
+    .flex {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+    }
+
+    .flex button {
+      padding: 20px 40px;
+      cursor: pointer;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="container">
+    <div class="flex">
+    <button id="submit">SUBMIT</button>
+    </div>
+    
+  </div>
+
+  <script>
+    const selectColor = document.querySelector('.container');
+    console.log(selectColor);
+
+    const btn = document.getElementById('submit');
+
+    
+    btn.addEventListener('click', ()=>{
+      const generate =  '#'+(Math.random() * 0xFFFFFF << 0).toString(16).padStart(6, '0');
+
+      selectColor.style.backgroundColor = generate;
+    });
+
+  
+
+
+    
+  </script>
+</body>
+
+</html>
