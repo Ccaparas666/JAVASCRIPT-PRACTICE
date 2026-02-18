@@ -720,34 +720,32 @@ document.querySelectorAll('.js-add-to-cart')
   .forEach((button) =>{
     button.addEventListener('click', () => {
       const productId = button.dataset.productId;
+      const cartQuantitySelector = Number(document.querySelector(`.js-quantity-selector-${productId}`).value);
 
       let matchingItem;
-      
 
       cart.forEach((item) => {
         if(productId === item.productId){
           matchingItem = item;
         }
       });
-      
+
       if (matchingItem) {
-        matchingItem.quantity += 1;
+        matchingItem.quantity += cartQuantitySelector;
       }else {
         cart.push ({
         productId: productId,
-        quantity: 1,
+        quantity: cartQuantitySelector,
       });
       }
       
       let cartQuantity = 0;
-      let elementofCartQuantity = Numberdocument.querySelector(`.js-quantity-selector-${products.id}`);
-      console.log(elementofCartQuantity.value);
-
-
       cart.forEach((item) => {
         cartQuantity += item.quantity;
         
       });
+
+      console.log(cart);
       
       document.querySelector('.js-cart-quantity')
         .innerHTML = cartQuantity;
